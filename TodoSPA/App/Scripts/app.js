@@ -6,7 +6,7 @@
         tenant: 'strockisdev.onmicrosoft.com',
         clientId: 'b075ddef-0efa-453b-997b-de1337c29185',
         postLogoutRedirectUri: window.location.origin,
-        cacheLocation: 'localStorage', // IE Bug?
+        //cacheLocation: 'localStorage', // enable for IE, as sessionStorage does not work for localhost.
     };
     var authContext = new AuthenticationContext(config);
 
