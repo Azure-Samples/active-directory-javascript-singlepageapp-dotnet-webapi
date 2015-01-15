@@ -166,7 +166,6 @@ AuthenticationContext.prototype.login = function () {
     var urlNavigate = this._getNavigateUrl('id_token', null) + '&nonce=' + encodeURIComponent(this._idTokenNonce);
     this.frameCallInProgress = false;
     this._loginInProgress = true;
-    console.log(sessionStorage);
     if (this.config.displayCall) {
         // User defined way of handling the navigation
         this.config.displayCall(urlNavigate);
@@ -719,7 +718,6 @@ AuthenticationContext.prototype.getResourceForEndpoint = function (endpoint) {
 AuthenticationContext.prototype.handleWindowCallback = function () {
     // This is for regular javascript usage for redirect handling
     // need to make sure this is for callback
-    console.log(sessionStorage);
 
     var hash = window.location.hash;
     if (this.isCallback(hash)) {

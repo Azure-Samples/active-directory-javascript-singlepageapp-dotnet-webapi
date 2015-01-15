@@ -1,9 +1,9 @@
-﻿define(function (require) {
+﻿(function () {
 
     // The HTML for this View
     var viewHTML;
-    // Instantiate ADAL authContext
-    var authContext = require('../Utils/authHelper');
+    // Instantiate the ADAL AuthenticationContext
+    var authContext = new AuthenticationContext(config);
 
     function refreshViewData() {
 
@@ -96,9 +96,6 @@
             var $entry = $(event.target).parents(".data-template");
             var $entryDescription = $entry.find(".view-data-description").hide();
             var $editInput = $entry.find(".view-data-edit-input");
-            console.log($entryDescription.text());
-            console.log($entryDescription);
-            console.log($editInput);
             $editInput.val($entryDescription.text());
             $editInput.show();
             $entry.find(".view-data-mode-delete").hide();
@@ -137,7 +134,7 @@
                     printErrorMessage('ADAL Error Occurred: ' + error);
                     return;
                 }
-                
+
                 // Update Todo Item
                 $.ajax({
                     type: "PUT",
@@ -220,17 +217,17 @@
     }
 
     // RequireJS Module
-    return {
+    window.todoListCtrl = {
         requireADLogin: true,
         preProcess: function (html) {
-            
+
         },
         postProcess: function (html) {
             viewHTML = html;
             registerViewClickHandlers();
             refreshViewData();
         },
-        
     };
+}());
 
-});
+    

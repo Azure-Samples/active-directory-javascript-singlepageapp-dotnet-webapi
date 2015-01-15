@@ -1,5 +1,5 @@
-﻿define(function () {
-    return {
+﻿(function () {
+    window.homeCtrl = {
         preProcess: function (html) {
 
         },
@@ -7,4 +7,4 @@
 
         },
     };
-});
+}());
