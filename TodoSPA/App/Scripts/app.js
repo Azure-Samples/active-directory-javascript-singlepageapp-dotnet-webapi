@@ -43,58 +43,26 @@
         authContext.login();
     });
     $(".app-viewLink").click(function (event) {
-        loadCtrl(stripHash($(event.target).attr('href')));
+        loadView(stripHash($(event.target).attr('href')));
     });
 
-    // Route View Requests
-    function viewCtrlMap(view) {
-        var script;
+    // Route View Requests To Appropriate Controller
+    function loadCtrl(view) {
         switch (view) {
             case 'Home':
-                script = 'homeCtrl';
-                break;
+                return homeCtrl;
             case 'TodoList':
-                script = 'todoListCtrl';
-                break;
+                return todoListCtrl;
             case 'UserData':
-                script = 'homeCtrl'; // For Now, So IE doesn't throw
-                break; 
+                return homeCtrl; // For Now, So IE doesn't throw
         }
-
-        $.ajax({
-            type: "GET",
-            url: "App/Scripts/Ctrls/" + script + ".js",
-            dataType: "script",
-            cache: true,
-        }).done(function () {
-            console.log('View Script Loaded');
-            var ctrl;
-            switch (view) {
-                case 'Home':
-                    ctrl = homeCtrl;
-                    break;
-                case 'TodoList':
-                    ctrl = todoListCtrl;
-                    break;
-                case 'UserData':
-                    ctrl = homeCtrl; // For Now, So IE doesn't throw
-                    break;
-            }
-            loadView(ctrl, view);
-        }).fail(function () {
-            console.log('Error getting controller script');
-            $errorMessage.html('Error Loading View JS.');
-        });
-    }
-
-    // Load Controller JS File
-    function loadCtrl(view) {
-        $errorMessage.empty();
-        viewCtrlMap(view);
     }
 
     // Show a View
-    function loadView(ctrl, view) {
+    function loadView(view) {
+
+        $errorMessage.empty();
+        var ctrl = loadCtrl(view);
 
         // Check if View Requires Authentication
         if (ctrl.requireADLogin && !authContext.getCachedUser()) {
