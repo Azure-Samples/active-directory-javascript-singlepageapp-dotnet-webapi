@@ -18,8 +18,13 @@
     var $errorMessage = $(".app-error");
 
     // Check For & Handle Redirect From AAD After Login
+    var isCallback = authContext.isCallback(window.location.hash);
     authContext.handleWindowCallback();
     $errorMessage.html(authContext.getLoginError());
+
+    if (isCallback && !authContext.getLoginError()) {
+        window.location = authContext._getItem(authContext.CONSTANTS.STORAGE.LOGIN_REQUEST);
+    }
 
     // Check Login Status, Update UI
     var user = authContext.getCachedUser();
@@ -35,6 +40,14 @@
         $signOutButton.hide();
     }
 
+    // Handle Navigation Directly to View
+    window.onhashchange = function () {
+        loadView(stripHash(window.location.hash));
+    };
+    window.onload = function () {
+        $(window).trigger("hashchange");
+    };
+
     // Register NavBar Click Handlers
     $signOutButton.click(function () {
         authContext.logOut();
@@ -42,19 +55,16 @@
     $signInButton.click(function () {
         authContext.login();
     });
-    $(".app-viewLink").click(function (event) {
-        loadView(stripHash($(event.target).attr('href')));
-    });
 
     // Route View Requests To Appropriate Controller
     function loadCtrl(view) {
-        switch (view) {
-            case 'Home':
+        switch (view.toLowerCase()) {
+            case 'home':
                 return homeCtrl;
-            case 'TodoList':
+            case 'todolist':
                 return todoListCtrl;
-            case 'UserData':
-                return homeCtrl; // For Now, So IE doesn't throw
+            case 'userdata':
+                return userDataCtrl;
         }
     }
 
@@ -64,8 +74,12 @@
         $errorMessage.empty();
         var ctrl = loadCtrl(view);
 
+        if (!ctrl)
+            return;
+
         // Check if View Requires Authentication
         if (ctrl.requireADLogin && !authContext.getCachedUser()) {
+            authContext.config.redirectUri = window.location.href;
             authContext.login();
             return;
         }
