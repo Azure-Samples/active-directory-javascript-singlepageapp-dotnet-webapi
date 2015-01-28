@@ -75,7 +75,7 @@ The key files containing authentication logic are the following:
 
 **index.html** - contains a reference to adal.js.
 
-**todoListCtrl.js **- shows how to take advantage of the acquireToken() method in ADAL to get a token for accessing a resource.
+**todoListCtrl.js**- shows how to take advantage of the acquireToken() method in ADAL to get a token for accessing a resource.
 
 **userDataCtrl.js** - shows how to extract user information from the cached id_token.
    
