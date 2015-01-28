@@ -32,7 +32,7 @@
         $dataContainer.html(output);
     };
 
-    // RequireJS Module
+    // Module
     window.userDataCtrl = {
         requireADLogin: true,
         preProcess: function (html) {

@@ -216,7 +216,7 @@
         $errorMessage.html(mes);
     }
 
-    // RequireJS Module
+    // Module
     window.todoListCtrl = {
         requireADLogin: true,
         preProcess: function (html) {

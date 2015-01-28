@@ -3,10 +3,10 @@
 
     // Enter Global Config Values & Instantiate ADAL AuthenticationContext
     window.config = {
-        tenant: 'strockisdev.onmicrosoft.com',
-        clientId: 'b075ddef-0efa-453b-997b-de1337c29185',
+        tenant: 'Enter your tenant name here e.g. contoso.onmicrosoft.com',
+        clientId: 'Enter your client ID here e.g. e9a5a8b6-8af7-4719-9821-0deef255f68e',
         postLogoutRedirectUri: window.location.origin,
-        //cacheLocation: 'localStorage', // enable for IE, as sessionStorage does not work for localhost.
+        //cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.
     };
     var authContext = new AuthenticationContext(config);
 
