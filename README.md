@@ -72,8 +72,11 @@ Coming soon.
 The key files containing authentication logic are the following:
 
 **App.js** - Provides the app configuration values used by ADAL for driving protocol interactions with AAD, indicates which routes should not be accessed without previous authentication, issues login and logout requests to Azure AD, handles both successful and failed authentication callbacks from Azure AD, and displays information about the user received in the id_token.
-**index.html** - contains a reference to adal.js
+
+**index.html** - contains a reference to adal.js.
+
 **todoListCtrl.js **- shows how to take advantage of the acquireToken() method in ADAL to get a token for accessing a resource.
+
 **userDataCtrl.js** - shows how to extract user information from the cached id_token.
    
 
