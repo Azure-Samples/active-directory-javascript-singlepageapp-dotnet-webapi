@@ -1,5 +1,5 @@
 ﻿//----------------------------------------------------------------------
-// AdalJS v0.0.5
+// AdalJS v1.0.0
 // @preserve Copyright (c) Microsoft Open Technologies, Inc.
 // All Rights Reserved
 // Apache License 2.0
@@ -243,7 +243,7 @@ AuthenticationContext.prototype._renewToken = function (resource, callback) {
 
     var frameHandle = this._addAdalFrame('adalRenewFrame');
     var expectedState = this._guid() + '|' + resource;
-
+    this._idTokenNonce = this._guid();
     this.config.state = expectedState;
     // renew happens in iframe, so it keeps javascript context
     this._renewStates.push(expectedState);
@@ -297,11 +297,13 @@ AuthenticationContext.prototype._loadFrame = function (urlNavigate, frameName) {
     // This trick overcomes iframe navigation in IE
     // IE does not load the page consistently in iframe
     var self = this;
+    self._logstatus('LoadFrame: ' + frameName);
+    var frameCheck = frameName;
     setTimeout(function () {
-        var frameHandle = self._addAdalFrame(frameName);
+        var frameHandle = self._addAdalFrame(frameCheck);
         if (frameHandle.src === '' || frameHandle.src === 'about:blank') {
             frameHandle.src = urlNavigate;
-            self._loadFrame(urlNavigate);
+            self._loadFrame(urlNavigate, frameCheck);
         }
     }, 500);
 };
@@ -718,7 +720,6 @@ AuthenticationContext.prototype.getResourceForEndpoint = function (endpoint) {
 AuthenticationContext.prototype.handleWindowCallback = function () {
     // This is for regular javascript usage for redirect handling
     // need to make sure this is for callback
-
     var hash = window.location.hash;
     if (this.isCallback(hash)) {
         var requestInfo = this.getRequestInfo(hash);
@@ -737,6 +738,7 @@ AuthenticationContext.prototype.handleWindowCallback = function () {
         }
 
         window.location.hash = '';
+        window.location = this._getItem(this.CONSTANTS.STORAGE.LOGIN_REQUEST);
         if (requestInfo.requestType === this.REQUEST_TYPE.RENEW_TOKEN) {
             callback(this._getItem(this.CONSTANTS.STORAGE.ERROR_DESCRIPTION), requestInfo.parameters[this.CONSTANTS.ACCESS_TOKEN]);
             return;
@@ -807,8 +809,9 @@ AuthenticationContext.prototype._extractUserName = function (encodedIdToken) {
 
 AuthenticationContext.prototype._base64DecodeStringUrlSafe = function (base64IdToken) {
     // html5 should support atob function for decoding
+    base64IdToken = base64IdToken.replace(/-/g, '+').replace(/_/g, '/');
     if (window.atob) {
-        return window.atob(base64IdToken);
+        return decodeURIComponent(escape(window.atob(base64IdToken))); // jshint ignore:line
     }
 
     // TODO add support for this
@@ -936,6 +939,10 @@ AuthenticationContext.prototype._now = function () {
 
 
 AuthenticationContext.prototype._addAdalFrame = function (iframeId) {
+    if (typeof iframeId === 'undefined') {
+        return;
+    }
+
     this._logstatus('Add adal frame to document:' + iframeId);
     var adalFrame = document.getElementById(iframeId);
 
@@ -1043,7 +1050,7 @@ AuthenticationContext.prototype._cloneConfig = function (obj) {
 };
 
 AuthenticationContext.prototype._libVersion = function () {
-    return '0.0.5';
+    return '1.0.0';
 };
 
 AuthenticationContext.prototype._addClientId = function() {
