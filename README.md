@@ -4,7 +4,7 @@ platforms:
 author: azure
 ---
 
-SinglePageApp-jQuery-DotNet
+Intergrating Azure AD into a single page app
 ====================
 This sample demonstrates the use of ADAL for JavaScript for securing an single page app written independently of any frameworks, implemented with an ASP.NET Web API backend.
 
