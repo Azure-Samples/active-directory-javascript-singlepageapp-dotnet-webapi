@@ -1,14 +1,14 @@
 ---
-services:
-platforms:
-author: azure
+services: active-directory
+platforms: javascript
+author: dstrockis
 ---
 
 Intergrating Azure AD into a single page app
 ====================
 This sample demonstrates the use of ADAL for JavaScript for securing an single page app written independently of any frameworks, implemented with an ASP.NET Web API backend.
 
-ADAL for Javascript is an open source library.  For distribution options, source code, and contributions, check out the ADAL JS repo at https://github.com/AzureAD/azure-activedirectory-library-for-js.
+ADAL for Javascript is an open source library.  For distribution options, source code, and contributions, check out the ADAL JS repo at https://github.com/Azure-Samples/azure-activedirectory-library-for-js.
 
 For more information about how the protocols work in this scenario and other scenarios, see [Authentication Scenarios for Azure AD](http://go.microsoft.com/fwlink/?LinkId=394414).
 
@@ -19,12 +19,12 @@ Getting started is simple!  To run this sample you will need:
 - An Internet connection
 - An Azure subscription (a free trial is sufficient)
 
-Every Azure subscription has an associated Azure Active Directory tenant.  If you don't already have an Azure subscription, you can get a free subscription by signing up at [http://www.windowsazure.com](http://www.windowsazure.com).  All of the Azure AD features used by this sample are available free of charge.
+Every Azure subscription has an associated Azure Active Directory tenant.  If you don't already have an Azure subscription, you can get a free subscription by signing up at [https://azure.microsoft.com](https://azure.microsoft.com).  All of the Azure AD features used by this sample are available free of charge.
 
 ### Step 1:  Clone or download this repository
 
 From your shell or command line:
-`git clone https://github.com/AzureADSamples/SinglePageApp-jQuery-DotNet.git`
+`git clone https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi.git`
 
 ### Step 2:  Register the sample with your Azure Active Directory tenant
 
