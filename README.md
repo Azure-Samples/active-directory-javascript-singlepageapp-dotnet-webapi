@@ -30,11 +30,11 @@ From your shell or command line:
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
 2. On the top bar, click on your account and under the **Directory** list, choose the Active Directory tenant where you wish to register your application.
-2. Click on **More Services** in the left hand nav, and choose **Azure Active Directory**.
-3. Click on **Registered Applications** and choose **Add**.
-4. Enter a friendly name for the application, for example 'SinglePageApp-jQuery-DotNet' and select 'Web Application and/or Web API' as the Application Type. For the sign-on URL, enter the base URL for the sample, which is by default `https://localhost:44302/`. Click on **Create** to create the application.
-5. While still in the Azure portal, choose your application, click on **Settings** and choose **Properties**.
-6. Find the Application ID value and copy it to the clipboard.
+3. Click on **More Services** in the left hand nav, and choose **Azure Active Directory**.
+4. Click on **App registrations** and choose **Add**.
+5. Enter a friendly name for the application, for example 'SinglePageApp-jQuery-DotNet' and select 'Web Application and/or Web API' as the Application Type. For the sign-on URL, enter the base URL for the sample, which is by default `https://localhost:44302/`. Click on **Create** to create the application.
+6. While still in the Azure portal, choose your application, click on **Settings** and choose **Properties**.
+7. Find the Application ID value and copy it to the clipboard.
 
 
 ### Step 3:  Enable the OAuth2 implicit grant for your application
