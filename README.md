@@ -6,7 +6,7 @@ author: dstrockis
 
 > [AZURE.TIP] Try the preview of our new [developer portal](https://identity.microsoft.com/Docs/Web) that will help you get up and running with Azure Active Directory in just a few minutes!  The developer portal will walk you through the process of registering an app and integrating Azure AD into your code.  When you’re finished, you will have a simple application that can authenticate users in your tenant and a backend that can accept tokens and perform validation.  
 
-Intergrating Azure AD into a single page app
+Integrating Azure AD into a single page app
 ====================
 This sample demonstrates the use of ADAL for JavaScript for securing an single page app written independently of any frameworks, implemented with an ASP.NET Web API backend.
 
