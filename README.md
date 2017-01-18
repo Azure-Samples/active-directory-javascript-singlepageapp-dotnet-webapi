@@ -36,7 +36,7 @@ From your shell or command line:
 5. Enter a friendly name for the application, for example 'SinglePageApp-jQuery-DotNet' and select 'Web Application and/or Web API' as the Application Type. For the sign-on URL, enter the base URL for the sample, which is by default `https://localhost:44302/`. For the App ID URI, enter `https://<your_tenant_name>/SinglePageApp-jQuery-DotNet`, replacing `<your_tenant_name>` with the name of your Azure AD tenant. Click on **Create** to create the application.
 6. While still in the Azure portal, choose your application, click on **Settings** and choose **Properties**.
 7. Find the Application ID value and copy it to the clipboard.
-
+8. Grant permissions across your tenant for your application. Go to Settings -> Properties -> Required Permissions, and click on the **Grant Permissions** button in the top bar. Click **Yes** to confirm.
 
 ### Step 3:  Enable the OAuth2 implicit grant for your application
 
