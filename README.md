@@ -15,7 +15,7 @@ For more information about how the protocols work in this scenario and other sce
 ## How To Run This Sample
 
 Getting started is simple!  To run this sample you will need:
-- Visual Studio 2013
+- Visual Studio 2017
 - An Internet connection
 - An Azure Active Directory (Azure AD) tenant. For more information on how to get an Azure AD tenant, please see [How to get an Azure AD tenant](https://azure.microsoft.com/en-us/documentation/articles/active-directory-howto-tenant/) 
 - A user account in your Azure AD tenant. This sample will not work with a Microsoft account, so if you signed in to the Azure portal with a Microsoft account and have never created a user account in your directory before, you need to do that now.
@@ -29,8 +29,8 @@ From your shell or command line:
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
 2. On the top bar, click on your account and under the **Directory** list, choose the Active Directory tenant where you wish to register your application.
-3. Click on **More Services** in the left hand nav, and choose **Azure Active Directory**.
-4. Click on **App registrations** and choose **Add**.
+3. From the left hand navigation pane, choose **Azure Active Directory**.
+4. Click on **App registrations** and choose **New application registration**.
 5. Enter a friendly name for the application, for example 'SinglePageApp-jQuery-DotNet' and select 'Web Application and/or Web API' as the Application Type. For the sign-on URL, enter the base URL for the sample, which is by default `https://localhost:44302/`. Click on **Create** to create the application.
 6. While still in the Azure portal, choose your application, click on **Settings** and choose **Properties**.
 7. Find the Application ID value and copy it to the clipboard.
@@ -47,7 +47,7 @@ By default, applications provisioned in Azure AD are not enabled to use the OAut
 
 ### Step 4:  Configure the sample to use your Azure Active Directory tenant
 
-1. Open the solution in Visual Studio 2013.
+1. Open the solution in Visual Studio 2017.
 2. Open the `web.config` file.
 3. Find the app key `ida:Tenant` and replace the value with your AAD tenant name.
 4. Find the app key `ida:Audience` and replace the value with the Client ID from the Azure portal.
@@ -61,10 +61,6 @@ Clean the solution, rebuild the solution, and run it.
 
 You can trigger the sign in experience by either clicking on the sign in link on the top right corner, or by clicking directly on the Todo List tab.
 Explore the sample by signing in, adding items to the To Do list, removing the user account, and starting again. 
-
-## How To Deploy This Sample to Azure
-
-Coming soon.
 
 ## About the Code
 
