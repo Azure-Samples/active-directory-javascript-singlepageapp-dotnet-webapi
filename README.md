@@ -30,27 +30,29 @@ From your shell or command line:
 1. Sign in to the [Azure portal](https://portal.azure.com).
 2. On the top bar, click on your account and under the **Directory** list, choose the Active Directory tenant where you wish to register your application.
 3. From the left hand navigation pane, choose **Azure Active Directory**.
-4. Click on **App registrations** and choose **New application registration**.
-5. Enter a friendly name for the application, for example 'SinglePageApp-jQuery-DotNet' and select 'Web Application and/or Web API' as the Application Type. For the sign-on URL, enter the base URL for the sample, which is by default `https://localhost:44302/`. Click on **Create** to create the application.
-6. While still in the Azure portal, choose your application, click on **Settings** and choose **Properties**.
-7. Find the Application ID value and copy it to the clipboard.
-8. For the App ID URI, enter `https://<your_tenant_name>/SinglePageApp-jQuery-DotNet`, replacing `<your_tenant_name>` with the name of your Azure AD tenant. 
-9. Grant permissions across your tenant for your application. Go to Settings -> Required Permissions, and click on the **Grant Permissions** button in the top bar. Click **Yes** to confirm.
+4. Click on **[App registrations](https://go.microsoft.com/fwlink/?linkid=2083908)** and choose **New registration**.
+5. When the Register an application page appears, enter your application's registration information:
+    - Enter a friendly name for the application, for example 'SinglePageApp-jQuery-DotNet'. 
+    - Leave **Supported account types** on **Accounts in this organizational directory only**
+    - For the **Redirect URI (optional)**, enter the base URL for the sample, which is by default `https://localhost:44302/`. 
+6. Click on **Register** to create the application.
+7. On the following app **Overview** page, find the **Application (client) ID** value and record it for later. You'll need it to configure the Visual Studio configuration file for this project.
+8. Select **Expose an API**, and select *Set* For the App ID URI. When prompted, enter `https://<your_tenant_name>/SinglePageApp-jQuery-DotNet`, replacing `<your_tenant_name>` with the name of your Azure AD tenant. 
+9. [Optional] Next, if you are tenant admin, you can grant permissions across your tenant for your application. Go to **API Permissions**, and then choose **Grant admin consent for <tenant_name>** button. Click *Yes* to confirm.
 
 ### Step 3:  Enable the OAuth2 implicit grant for your application
 
 By default, applications provisioned in Azure AD are not enabled to use the OAuth2 implicit grant. In order to run this sample, you need to explicitly opt in.
 
 1. From the former steps, your browser should still be on the Azure portal.
-2. From the application page, click on **Manifest** to open the inline manifest editor.
-3. Search for the `oauth2AllowImplicitFlow` property. You will find that it is set to `false`; change it to `true` and save the file.
+2. From the application page, click on **Authentication**, and under **Advanced Settings**, select the checkboxes next to `Access tokens` and `ID tokens` to enable OAuth2 implicit grant for the application
 
 ### Step 4:  Configure the sample to use your Azure Active Directory tenant
 
 1. Open the solution in Visual Studio 2017.
 2. Open the `web.config` file.
 3. Find the app key `ida:Tenant` and replace the value with your AAD tenant name.
-4. Find the app key `ida:Audience` and replace the value with the Client ID from the Azure portal.
+4. Find the app key `ida:Audience` and replace the value with the Application (client) ID from the Azure portal.
 5. Open the file `App/Scripts/App.js` and locate the line `window.config = ...`.
 6. Replace the value of `tenant` with your AAD tenant name.
 7. Replace the value of `clientId` with the Client ID from the Azure portal.
