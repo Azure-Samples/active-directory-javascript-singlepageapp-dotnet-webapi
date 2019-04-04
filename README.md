@@ -38,7 +38,7 @@ From your shell or command line:
 6. Click on **Register** to create the application.
 7. On the following app **Overview** page, find the **Application (client) ID** value and record it for later. You'll need it to configure the Visual Studio configuration file for this project.
 8. Select **Expose an API**, and select *Set* For the App ID URI. When prompted, enter `https://<your_tenant_name>/SinglePageApp-jQuery-DotNet`, replacing `<your_tenant_name>` with the name of your Azure AD tenant. 
-9. Next, grant permissions across your tenant for your application. Go to **API Permissions**, and then choose **Grant admin consent for <tenant_name>** button. Click *Yes* to confirm.
+9. [Optional] Next, if you are tenant admin, you can grant permissions across your tenant for your application. Go to **API Permissions**, and then choose **Grant admin consent for <tenant_name>** button. Click *Yes* to confirm.
 
 ### Step 3:  Enable the OAuth2 implicit grant for your application
 
